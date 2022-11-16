@@ -22,9 +22,9 @@
         <property name="formatters">
             <set>       <!-- Bean 클래스를 지정(set) -->
                 <bean class="net.ict.springex.controller.formatter.LocalDateFormatter"></bean>
+                <bean class="net.ict.springex.controller.formatter.CheckboxFormatter"></bean>
             </set>
         </property>
-
     </bean>
 
 

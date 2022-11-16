@@ -1,4 +1,4 @@
-package net.ict.springex.dto.domain;
+package net.ict.springex.domain;
 
 
 /* MyBatis와 스프링을 이용한 영속 처리

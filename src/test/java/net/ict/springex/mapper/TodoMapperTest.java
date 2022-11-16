@@ -1,16 +1,18 @@
 package net.ict.springex.mapper;
 
 import lombok.extern.log4j.Log4j2;
-import net.ict.springex.dto.domain.TodoVO;
-import net.ict.springex.mapper.TimeMapper;
-import net.ict.springex.mapper.TodoMapper;
+import net.ict.springex.domain.TodoVO;
+import net.ict.springex.dto.PageRequestDTO;
+import net.ict.springex.dto.PageResponseDTO;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import sun.jvm.hotspot.debugger.Page;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Log4j2
 @ExtendWith(SpringExtension.class)
@@ -34,5 +36,54 @@ public class TodoMapperTest {
                 .build();
         todoMapper.insert(todoVO);
     }
+
+
+    @Test
+    public void testSelectAll(){
+        List<TodoVO> voList = todoMapper.selectAll();
+        voList.forEach(vo -> log.info(vo));
+    }
+
+
+
+
+    @Test
+    public void testSelectOne(){
+        long tno = 2;
+        todoMapper.selectOne(tno);
+        log.info(todoMapper.selectOne(2L));
+    }
+
+    @Test
+    public void testDelete() {
+        TodoVO todoVO = TodoVO.builder()
+                .tno(2L)
+                .build();
+        todoMapper.delete(todoVO);
+    }
+
+
+    @Test
+    public void testUpdate(){
+        TodoVO todoVO = TodoVO.builder()
+                .title("반갑습니다요~")
+                .dueDate(LocalDate.of(2022,12,12))
+                .finished(false)
+                .tno(4L)
+                .build();
+        todoMapper.update(todoVO);
+    }
+
+
+    @Test
+    public void testSelectList(){
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
+                .page(1)
+                .size(10)
+                .build();
+        List<TodoVO> voList = todoMapper.selectList(pageRequestDTO);
+        voList.forEach(vo -> log.info(vo));
+    }
+
 
 }
