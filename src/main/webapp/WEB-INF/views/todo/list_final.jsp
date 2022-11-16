@@ -135,7 +135,7 @@
 
                         <script>
 
-/* document.querySelector(".pagination").addEventListener("click", function (e) {
+     document.querySelector(".pagination").addEventListener("click", function (e) {
         e.preventDefault()
         e.stopPropagation()
 
@@ -148,7 +148,7 @@
         const num = target.getAttribute("data-num")
 
         self.location = `/todo/list?page=\${num}` //백틱(` `)을 이용해서 템플릿 처리
-    },false)*/
+    },false)
 
     document.querySelector(".pagination").addEventListener("click", function (e) {
         e.preventDefault()
@@ -166,7 +166,6 @@
         formObj.innerHTML += `<input type='hidden' name='page' value='\${num}'>`
 
         formObj.submit();
-
     },false)
 
 
@@ -176,7 +175,6 @@
         e.stopPropagation()
 
         self.location ='/todo/list'
-
     },false)
 
 
